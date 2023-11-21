@@ -7,24 +7,7 @@ class RequestCubit extends Cubit<RequestState> {
   RequestCubit() : super(RequestInitState());
   static RequestCubit get(context) => BlocProvider.of(context);
 
-  // void rqustFun({
-  //   required String age,
-  //   required String color,
-  //   required String gender,
-  //   required String kind,
-  //   required String phone
-  // }) {
-  //   emit(CreatUserLoadingState());
-  //   FirebaseAuth.instance
-  //       .createUserWithEmailAndPassword(email: email, password: password)
-  //       .then((value) {
-  //     userCreate(email: email, uId: value.user!.uid);
-  //   }).catchError((err) {
-  //     emit(CreatUserErrState(err.toString()));
-  //   });
-  // }
-
-  void userCreate({
+  void requestMethod({
     required String age,
     required String color,
     required String gender,

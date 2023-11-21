@@ -122,7 +122,7 @@ class _RequestScreenState extends State<RequestScreen> {
                               textColor: AppColors.offWhite,
                               isOutlined: false,
                               onTap: () {
-                                cubit.userCreate(
+                                cubit.requestMethod(
                                     age: age.text,
                                     color: color.text,
                                     gender: gender.text,

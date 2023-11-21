@@ -8,7 +8,7 @@ import 'package:save/presentation/view/screens/help_theme_screen.dart';
 import 'package:save/presentation/view/screens/pets_screen.dart';
 import 'package:save/presentation/view/screens/request_screen.dart';
 import 'package:save/presentation/view/widgets/custom_button.dart';
-import 'package:save/presentation/view/widgets/pets_card.dart';
+import 'package:save/presentation/view/widgets/pets_card_horezintal.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -88,30 +88,15 @@ class HomeScreen extends StatelessWidget {
           Container(
               color: AppColors.white,
               width: double.infinity,
-              height: context.height * 0.8,
+              height: context.height * 0.35,
               child: Stack(
                 children: [
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       petsItem(context),
                       SizedBox(
-                        height: context.height * 0.01,
-                      ),
-                      petsItem(context),
-                      SizedBox(
-                        height: context.height * 0.01,
-                      ),
-                      petsItem(context),
-                      SizedBox(
-                        height: context.height * 0.01,
-                      ),
-                      petsItem(context),
-                      SizedBox(
-                        height: context.height * 0.01,
-                      ),
-                      petsItem(context),
-                      SizedBox(
-                        height: context.height * 0.04,
+                        height: context.height * 0.03,
                       ),
                       CustomButton(
                           lable: "Explore",
@@ -126,12 +111,12 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   Positioned(
-                    top: context.height * 0.25,
-                    left: context.width * 0.2,
+                    top: context.height * 0.05,
+                    left: context.width * 0.3,
                     child: Image.asset(
                       "assets/leg/Iconmaterial-pets.png",
                       color: Colors.grey.withOpacity(0.5),
-                      height: context.height * 0.4,
+                      height: context.height * 0.2,
                     ),
                   ),
                 ],

@@ -11,7 +11,19 @@ class PetsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Pets"),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_new_outlined,
+            color: AppColors.offWhite,
+          ),
+        ),
+        title: Text(
+          "Pets",
+          style: TextStyle(color: AppColors.offWhite),
+        ),
         backgroundColor: AppColors.darkBrown,
       ),
       body: StreamBuilder(

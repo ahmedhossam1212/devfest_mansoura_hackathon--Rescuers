@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:save/core/utils/app_colors.dart';
 import 'package:save/core/utils/media_query_values.dart';
-import 'package:save/core/utils/style_manager.dart';
 import 'package:save/presentation/manager/cubit/requst_cubit.dart';
 import 'package:save/presentation/manager/states/request_states.dart';
 import 'package:save/presentation/view/widgets/custom_button.dart';
@@ -37,21 +36,21 @@ class _RequestScreenState extends State<RequestScreen> {
           var cubit = RequestCubit.get(context);
           return Scaffold(
               appBar: AppBar(
-                leading: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: AppColors.darkBrown,
-                    )),
-                elevation: 0.0,
                 centerTitle: true,
-                backgroundColor: AppColors.white,
-                title: Text(
-                  "Apply Request",
-                  style: getBoldStyle(fontSize: 25, color: AppColors.darkBrown),
+                leading: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back_ios_new_outlined,
+                    color: AppColors.offWhite,
+                  ),
                 ),
+                title: Text(
+                  "Apply request",
+                  style: TextStyle(color: AppColors.offWhite),
+                ),
+                backgroundColor: AppColors.darkBrown,
               ),
               body: SingleChildScrollView(
                 child: Stack(

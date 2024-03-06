@@ -3,7 +3,7 @@ import 'package:save/core/utils/style_manager.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    Key? key,
+    super.key,
     required this.lable,
     required this.height,
     required this.width,
@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
     required this.isOutlined,
     required this.backgroundColor,
     required this.textColor,
-  }) : super(key: key);
+  });
   final String lable;
   final double height;
   final double width;

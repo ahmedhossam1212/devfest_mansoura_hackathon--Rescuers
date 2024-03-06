@@ -26,11 +26,9 @@ class LoginCubit extends Cubit<LoginStates> {
   void getUserData() {
     emit(LoginLoadingStates());
     FirebaseFirestore.instance.collection('users').doc(uId).get().then((value) {
-      print(value.data());
       userModel = UserModel.fromJason(value.data()!);
       emit(LoginSucessStates());
     }).catchError((error) {
-      print(error.toString());
       emit(LoginErrStates());
     });
   }

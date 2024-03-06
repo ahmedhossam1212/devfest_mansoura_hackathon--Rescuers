@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:save/core/utils/app_colors.dart';
 
 import '../../core/utils/style_manager.dart';
 
@@ -8,10 +9,12 @@ class AppTheme {
     return ThemeData(
       scaffoldBackgroundColor: Colors.white,
       primaryColor: Colors.blue,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
+        iconTheme: IconThemeData(color: AppColors.offWhite),
         backgroundColor: Colors.white,
+        titleTextStyle: TextStyle(color: AppColors.offWhite),
         elevation: 0.0,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.white,
         ),
       ),

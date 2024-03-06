@@ -58,7 +58,19 @@ class _HelpScreenState extends State<HelpScreen> {
           return Scaffold(
             appBar: AppBar(
               centerTitle: true,
-              title: const Text("Help Them"),
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios_new_outlined,
+                  color: AppColors.offWhite,
+                ),
+              ),
+              title: Text(
+                "Help them",
+                style: TextStyle(color: AppColors.offWhite),
+              ),
               backgroundColor: AppColors.darkBrown,
             ),
             body: SingleChildScrollView(

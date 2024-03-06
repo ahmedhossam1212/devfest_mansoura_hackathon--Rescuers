@@ -32,11 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return BlocProvider(
       create: (context) => RegisterCubit(),
       child: BlocConsumer<RegisterCubit, CreateUserStates>(
-        listener: (context, state) {
-          if (state is CreatUserSuccessState) {
-            navigateTo(context, const HomeScreen());
-          }
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           var cubit = RegisterCubit.get(context);
           return Scaffold(
@@ -47,14 +43,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     icon: Icon(
                       Icons.arrow_back,
-                      color: AppColors.darkBrown,
+                      color: AppColors.offWhite,
                     )),
                 elevation: 0.0,
                 centerTitle: true,
                 backgroundColor: AppColors.white,
                 title: Text(
                   "Sign Up",
-                  style: getBoldStyle(fontSize: 25, color: AppColors.darkBrown),
+                  style: getBoldStyle(fontSize: 25, color: AppColors.offWhite),
                 ),
               ),
               body: SingleChildScrollView(
@@ -131,6 +127,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   cubit.userRegister(
                                       email: emailController.text,
                                       password: passController.text);
+
+                                  navigateAndFinish(
+                                      context, const HomeScreen());
                                 }
                               },
                             ),

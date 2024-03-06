@@ -22,7 +22,7 @@ Widget buildpetsItem({
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(20)),
               width: double.infinity,
-              height: context.height * 0.5,
+              height: context.height * 0.55,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

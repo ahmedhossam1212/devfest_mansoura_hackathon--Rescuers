@@ -11,6 +11,15 @@ class AwarenessScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_new_outlined,
+            color: AppColors.offWhite,
+          ),
+        ),
         title: Text(
           "Awareness",
           style: TextStyle(color: AppColors.offWhite),

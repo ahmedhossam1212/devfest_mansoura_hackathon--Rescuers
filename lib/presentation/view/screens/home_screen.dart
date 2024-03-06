@@ -18,8 +18,17 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Paws"),
-        elevation: 0,
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.arrow_back_ios_new_outlined,
+            color: AppColors.darkBrown,
+          ),
+        ),
+        title: Text(
+          "Paws",
+          style: TextStyle(color: AppColors.offWhite),
+        ),
         backgroundColor: AppColors.darkBrown,
       ),
       body: SingleChildScrollView(
@@ -27,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           Container(
             color: AppColors.darkBrown,
             width: double.infinity,
-            height: context.height * 0.8,
+            height: context.height * 0.9,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
@@ -96,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       petsItem(context),
                       SizedBox(
-                        height: context.height * 0.03,
+                        height: context.height * 0.08,
                       ),
                       CustomButton(
                           lable: "Explore",
@@ -155,7 +164,7 @@ class HomeScreen extends StatelessWidget {
                         height: context.height * 0.07,
                         width: context.width * 0.8,
                         onTap: () {
-                          navigateTo(context, RequestScreen());
+                          navigateTo(context, const RequestScreen());
                         },
                         isOutlined: false),
                   ),
@@ -165,7 +174,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Container(
             width: double.infinity,
-            height: context.height * 0.8,
+            height: context.height * 0.9,
             color: AppColors.darkBrown,
             child: Padding(
               padding: const EdgeInsets.all(10.0),

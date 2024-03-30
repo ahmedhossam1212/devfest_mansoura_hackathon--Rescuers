@@ -8,15 +8,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitStates());
+
   static LoginCubit get(context) => BlocProvider.of(context);
+
   UserModel? userModel;
+
   void userLogin({required String email, required String password}) async {
     emit(LoginLoadingStates());
+
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password)
         .then((value) {
       uId = value.user!.uid;
-      setIsLogin();
+
       emit(LoginSucessStates());
     }).catchError((err) {
       emit(LoginErrStates());
@@ -31,11 +35,6 @@ class LoginCubit extends Cubit<LoginStates> {
     }).catchError((error) {
       emit(LoginErrStates());
     });
-  }
-
-  void setIsLogin() async {
-    final pref = await SharedPreferences.getInstance();
-    pref.setBool("isLogin", true);
   }
 
   bool? isLogin;

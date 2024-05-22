@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:save/core/utils/app_colors.dart';
 import 'package:save/core/utils/media_query_values.dart';
 import 'package:save/core/utils/style_manager.dart';
+import 'package:video_player/video_player.dart';
 
 Widget buildpetsItem({
   required BuildContext context,
-  required String imgUrl,
+  required VideoPlayerController imgUrl,
   required String phone,
   required String gender,
   required String address,
@@ -27,13 +28,9 @@ Widget buildpetsItem({
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: context.height * 0.32,
-                      width: double.infinity,
-                      child: Image.network(
-                        imgUrl,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                        height: context.height * 0.32,
+                        width: double.infinity,
+                        child: VideoPlayer(imgUrl)),
                     SizedBox(
                       height: context.height * 0.01,
                     ),

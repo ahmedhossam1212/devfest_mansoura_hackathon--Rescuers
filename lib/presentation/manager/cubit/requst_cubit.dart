@@ -14,6 +14,7 @@ class RequestCubit extends Cubit<RequestState> {
     required String kind,
     required String phone,
   }) {
+    emit(RequestLoadingState());
     RequestModel model = RequestModel(
       age: age,
       color: color,

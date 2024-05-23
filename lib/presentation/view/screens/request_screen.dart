@@ -18,11 +18,11 @@ class RequestScreen extends StatefulWidget {
 class _RequestScreenState extends State<RequestScreen> {
   final _formKey = GlobalKey<FormState>();
   // ignore: non_constant_identifier_names
-  final TextEditingController gender = TextEditingController();
-  final TextEditingController kind = TextEditingController();
-  final TextEditingController age = TextEditingController();
-  final TextEditingController color = TextEditingController();
-  final TextEditingController phone = TextEditingController();
+  final TextEditingController genderController = TextEditingController();
+  final TextEditingController kindController = TextEditingController();
+  final TextEditingController ageController = TextEditingController();
+  final TextEditingController colorController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
   bool isChecked = false;
 
@@ -69,7 +69,7 @@ class _RequestScreenState extends State<RequestScreen> {
                               height: context.height * 0.35,
                             ),
                             defualtFormField(
-                              controller: gender,
+                              controller: genderController,
                               label: "Gender",
                               type: TextInputType.text,
                               validate: (value) {},
@@ -78,7 +78,7 @@ class _RequestScreenState extends State<RequestScreen> {
                               height: 10,
                             ),
                             defualtFormField(
-                              controller: kind,
+                              controller: kindController,
                               label: "Kind",
                               type: TextInputType.text,
                               validate: (value) {},
@@ -87,7 +87,7 @@ class _RequestScreenState extends State<RequestScreen> {
                               height: 10,
                             ),
                             defualtFormField(
-                              controller: age,
+                              controller: ageController,
                               label: "Age",
                               type: TextInputType.number,
                               validate: (value) {},
@@ -96,7 +96,7 @@ class _RequestScreenState extends State<RequestScreen> {
                               height: 10,
                             ),
                             defualtFormField(
-                              controller: color,
+                              controller: colorController,
                               label: "Color",
                               type: TextInputType.text,
                               validate: (value) {},
@@ -105,28 +105,45 @@ class _RequestScreenState extends State<RequestScreen> {
                               height: 10,
                             ),
                             defualtFormField(
-                              controller: phone,
+                              controller: phoneController,
                               label: "Phone",
-                              type: TextInputType.text,
+                              type: TextInputType.phone,
                               validate: (value) {},
                             ),
                             SizedBox(
                               height: context.height * 0.05,
                             ),
-                            CustomButton(
-                              lable: "Request",
-                              height: 50,
-                              width: 500,
-                              backgroundColor: AppColors.darkBrown,
-                              textColor: AppColors.offWhite,
-                              isOutlined: false,
-                              onTap: () {
-                                cubit.requestMethod(
-                                    age: age.text,
-                                    color: color.text,
-                                    gender: gender.text,
-                                    kind: kind.text,
-                                    phone: phone.text);
+                            BlocBuilder<RequestCubit, RequestState>(
+                              builder: (context, state) {
+                                if (state is RequestLoadingState) {
+                                  return CircularProgressIndicator(
+                                    color: AppColors.darkBrown,
+                                  );
+                                } else {
+                                  return CustomButton(
+                                    lable: "Request",
+                                    height: 50,
+                                    width: 500,
+                                    backgroundColor: AppColors.darkBrown,
+                                    textColor: AppColors.offWhite,
+                                    isOutlined: false,
+                                    onTap: () {
+                                      cubit.requestMethod(
+                                          age: ageController.text,
+                                          color: colorController.text,
+                                          gender: genderController.text,
+                                          kind: kindController.text,
+                                          phone: phoneController.text);
+                                      setState(() {
+                                        ageController.text = "";
+                                        colorController.text = "";
+                                        genderController.text = "";
+                                        kindController.text = "";
+                                        phoneController.text = "";
+                                      });
+                                    },
+                                  );
+                                }
                               },
                             ),
                           ],

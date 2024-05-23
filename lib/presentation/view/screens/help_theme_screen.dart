@@ -127,7 +127,7 @@ class _HelpScreenState extends State<HelpScreen> {
                                   controller: phoneController,
                                   validate: () {},
                                   label: "Phone",
-                                  type: TextInputType.text),
+                                  type: TextInputType.phone),
                               SizedBox(
                                 height: context.height * 0.05,
                               ),
@@ -139,26 +139,43 @@ class _HelpScreenState extends State<HelpScreen> {
                               SizedBox(
                                 height: context.height * .1,
                               ),
-                              CustomButton(
-                                lable: "Submit",
-                                height: context.height * 0.07,
-                                width: context.width * 0.8,
-                                onTap: () async {
-                                  if (imageUrl == null) {
-                                    await uploadImage();
-                                  }
-                                  if (imageUrl != null) {
-                                    cubit.helpFun(
-                                      address: addressController.text,
-                                      gender: genderController.text,
-                                      phone: phoneController.text,
-                                      postImage: imageUrl!,
+                              BlocBuilder<HelpCubit, HelpStates>(
+                                builder: (context, state) {
+                                  if (state is HelpLoadingState) {
+                                    return CircularProgressIndicator(
+                                      color: AppColors.darkBrown,
+                                    );
+                                  } else if (state is HelpSuccessState) {
+                                    return CircleAvatar(
+                                      backgroundColor: AppColors.darkBrown,
+                                      child: Icon(
+                                        Icons.check,
+                                        color: AppColors.white,
+                                      ),
                                     );
                                   }
+                                  return CustomButton(
+                                    lable: "Submit",
+                                    height: context.height * 0.07,
+                                    width: context.width * 0.8,
+                                    onTap: () async {
+                                      if (imageUrl == null) {
+                                        await uploadImage();
+                                      }
+                                      if (imageUrl != null) {
+                                        cubit.helpFun(
+                                          address: addressController.text,
+                                          gender: genderController.text,
+                                          phone: phoneController.text,
+                                          postImage: imageUrl!,
+                                        );
+                                      }
+                                    },
+                                    isOutlined: false,
+                                    backgroundColor: AppColors.darkBrown,
+                                    textColor: AppColors.offWhite,
+                                  );
                                 },
-                                isOutlined: false,
-                                backgroundColor: AppColors.darkBrown,
-                                textColor: AppColors.offWhite,
                               )
                             ],
                           ),
